@@ -9,6 +9,14 @@ const cartSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    plantName:{
+        type:String,
+        required:true
+    },
+    plantImage:{
+        type:String,
+        required:true
+    },
     quantity: {
         type: Number,
         default: 1

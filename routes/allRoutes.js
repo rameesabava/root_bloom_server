@@ -1,6 +1,7 @@
 const express = require('express')
 const userController = require('../controllers/userController')
 const plantController = require('../controllers/plantController')
+const cartController = require('../controllers/cartController')
 const adminMiddleware = require('../middlewares/adminMiddleware')
 const jwtMiddleware = require('../middlewares/jwtMiddleware')
 const multerMiddleware = require('../middlewares/multerMiddleware')
@@ -24,5 +25,10 @@ router.get('/plants', jwtMiddleware, plantController.getAllPlantsController)
 // view plant
 router.get('/plant/:id', jwtMiddleware, plantController.viewPlantController)
 
+// add plant
+router.post('/cart/add',jwtMiddleware, cartController.addToCartController)
+
+// get cart items
+router.get('/cart', jwtMiddleware, cartController.getCartController)
 
 module.exports = router

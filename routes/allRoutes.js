@@ -2,6 +2,7 @@ const express = require('express')
 const userController = require('../controllers/userController')
 const plantController = require('../controllers/plantController')
 const cartController = require('../controllers/cartController')
+const orderController = require('../controllers/orderController')
 const adminMiddleware = require('../middlewares/adminMiddleware')
 const jwtMiddleware = require('../middlewares/jwtMiddleware')
 const multerMiddleware = require('../middlewares/multerMiddleware')
@@ -25,10 +26,22 @@ router.get('/plants', jwtMiddleware, plantController.getAllPlantsController)
 // view plant
 router.get('/plant/:id', jwtMiddleware, plantController.viewPlantController)
 
-// add plant
+// add plant to cart
 router.post('/cart/add',jwtMiddleware, cartController.addToCartController)
 
 // get cart items
 router.get('/cart', jwtMiddleware, cartController.getCartController)
+
+// incremet quantity
+router.put('/cart/increment/:cartId', jwtMiddleware, cartController.incrementQuantityController)
+
+// decremet quantity
+router.put('/cart/decrement/:cartId', jwtMiddleware, cartController.decrementQuantityController)
+
+// remove cart item
+router.delete('/cart/remove/:cartId', jwtMiddleware, cartController.removeCartItemController)
+
+// add order
+router.post('/order/add',jwtMiddleware, orderController.addOrderController)
 
 module.exports = router

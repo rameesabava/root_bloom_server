@@ -74,3 +74,12 @@ exports.removeCartItemController = async (req, res) => {
     res.status(200).json(removeItem)
 
 }
+
+// delete all items from cart after place order
+exports.removeAllCartItemsController = async (req, res) => {
+    console.log("Inside removeAllCartItemsController");
+    const  userMail  = req.payload
+    const removeAllCartItems = await carts.deleteMany({userMail})
+    res.status(200).json(removeAllCartItems)
+
+}

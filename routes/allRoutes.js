@@ -41,7 +41,11 @@ router.put('/cart/decrement/:cartId', jwtMiddleware, cartController.decrementQua
 // remove cart item
 router.delete('/cart/remove/:cartId', jwtMiddleware, cartController.removeCartItemController)
 
+// remove all cart items
+router.delete('/cart/remove', jwtMiddleware, cartController.removeAllCartItemsController)
+
 // add order
 router.post('/order/add',jwtMiddleware, orderController.addOrderController)
+
 
 module.exports = router

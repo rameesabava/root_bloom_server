@@ -19,6 +19,12 @@ router.post('/login',userController.loginController)
 // add plant
 router.post('/plants/add',adminMiddleware,multerMiddleware.single('image'), plantController.addPlantController)
 
+// get all users
+router.get('/users', adminMiddleware, userController.getAllUsersController)
+
+// get all orders with status placed
+router.get('/orders/placed', adminMiddleware, orderController.getAllPlacedOrdersController)
+
 // -------------------------user------------------------------------
 // get plants
 router.get('/plants', jwtMiddleware, plantController.getAllPlantsController)

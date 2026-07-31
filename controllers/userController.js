@@ -35,3 +35,10 @@ exports.loginController = async (req,res)=>{
     }
      
 }
+
+// get all users
+exports.getAllUsersController = async (req,res)=>{
+    console.log("Inside getAllUsersController");
+    const allUsers = await users.find({role:"user"})
+    res.status(200).json(allUsers)
+}

@@ -11,3 +11,10 @@ exports.addOrderController = async (req, res) => {
     res.status(201).json(newOrder)
 
 }
+
+// get all orders with status placed
+exports.getAllPlacedOrdersController = async (req,res)=>{
+    console.log("Inside getAllPlacedOrdersController");
+    const allPlacedOrders = await orders.find({orderStatus:"Placed"})
+    res.status(200).json(allPlacedOrders)
+}

@@ -15,6 +15,14 @@ exports.addOrderController = async (req, res) => {
 // get all orders with status placed
 exports.getAllPlacedOrdersController = async (req,res)=>{
     console.log("Inside getAllPlacedOrdersController");
-    const allPlacedOrders = await orders.find({orderStatus:"Placed"})
+    const allPlacedOrders = await orders.find({orderStatus:"Placed"}).sort({createdAt:-1})
     res.status(200).json(allPlacedOrders)
+}
+
+// to view single order details
+exports.viewOrderController = async (req,res)=>{
+    console.log("Inside viewOrderController");
+    const {id} = req.params
+    const orderDetails = await orders.findById({_id:id})
+    res.status(200).json(orderDetails)
 }

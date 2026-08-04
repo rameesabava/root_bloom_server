@@ -25,6 +25,10 @@ router.get('/users', adminMiddleware, userController.getAllUsersController)
 // get all orders with status placed
 router.get('/orders/placed', adminMiddleware, orderController.getAllPlacedOrdersController)
 
+// view order
+router.get('/order/:id', adminMiddleware, orderController.viewOrderController)
+
+
 // -------------------------user------------------------------------
 // get plants
 router.get('/plants', jwtMiddleware, plantController.getAllPlantsController)

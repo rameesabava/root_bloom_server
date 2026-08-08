@@ -12,11 +12,11 @@ exports.addOrderController = async (req, res) => {
 
 }
 
-// get all orders with status placed
-exports.getAllPlacedOrdersController = async (req,res)=>{
-    console.log("Inside getAllPlacedOrdersController");
-    const allPlacedOrders = await orders.find({orderStatus:"Placed"}).sort({createdAt:-1})
-    res.status(200).json(allPlacedOrders)
+// get all orders
+exports.getAllOrdersController = async (req,res)=>{
+    console.log("Inside getAllOrdersController");
+    const allOrders = await orders.find().sort({createdAt:-1})
+    res.status(200).json(allOrders)
 }
 
 // to view single order details
@@ -25,4 +25,12 @@ exports.viewOrderController = async (req,res)=>{
     const {id} = req.params
     const orderDetails = await orders.findById({_id:id})
     res.status(200).json(orderDetails)
+}
+
+// to mark order status as shipped
+exports.updateOrderStatusController = async (req,res)=>{
+    console.log("Inside updateOrderStatusController");
+    const {id} = req.params
+    const updatedStatus = await orders.findByIdAndUpdate({_id:id},{orderStatus:"Shipped"},{new:true})
+    res.status(200).json(updatedStatus)
 }

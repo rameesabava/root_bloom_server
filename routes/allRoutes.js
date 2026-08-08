@@ -22,11 +22,14 @@ router.post('/plants/add',adminMiddleware,multerMiddleware.single('image'), plan
 // get all users
 router.get('/users', adminMiddleware, userController.getAllUsersController)
 
-// get all orders with status placed
-router.get('/orders/placed', adminMiddleware, orderController.getAllPlacedOrdersController)
+// get all orders
+router.get('/orders', adminMiddleware, orderController.getAllOrdersController)
 
 // view order
 router.get('/order/:id', adminMiddleware, orderController.viewOrderController)
+
+// update order status
+router.put('/order/status/:id', adminMiddleware, orderController.updateOrderStatusController)
 
 
 // -------------------------user------------------------------------
